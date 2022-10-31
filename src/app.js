@@ -40,13 +40,10 @@ app.get("/descargar/Dec", (req, res) => {
 });
 
 app.post("/encdec", upload.single("uploaded_file"), (req, res) => {
-  console.log(req.body);
   res.sendFile(path.join(__dirname, "views", "encdec.html"));
 });
 
 app.post("/process", urlencodedParser, (req, res) => {
-  console.log("Hola");
-  console.log(req.body);
   Cifrador(
     path.join(__dirname, "uploads", "Original.txt"),
     req.body.modo == "1"
@@ -56,7 +53,6 @@ app.post("/process", urlencodedParser, (req, res) => {
     req.body.modo,
     parseInt(req.body.Tamaño)
   );
-  console.log("Matenme");
   res.redirect(req.body.modo == "1" ? "descargar/Enc" : "descargar/Dec");
 });
 app.listen(PORT, () => {
