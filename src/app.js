@@ -1,25 +1,4 @@
-/* // Dependencias
-const express = require("express");
-const path = require("path");
-const port = 3000;
-const bodyParser = require("body-parser");
 
-const app = express();
-
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-app.post("/update", urlencodedParser, (req, res) => {
-	res.send(`<h1>Tus datos son: <br/>
-	Nombre: ${req.body.name} <br/>
-	Apellido: ${req.body.desc} </h1>`);
-	console.log(req.body);
-});
-
-app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "views", "index.html"));
-});
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
- */
 // Dependencias
 const express = require("express");
 const multer = require("multer");
@@ -29,7 +8,7 @@ const Cifrador = require("./FilesAES.js");
 
 const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 const storage = multer.diskStorage({
   destination: path.join(__dirname, "uploads"),
   filename: (req, res, cb) => {
@@ -80,6 +59,6 @@ app.post("/process", urlencodedParser, (req, res) => {
   console.log("Matenme");
   res.redirect(req.body.modo == "1" ? "descargar/Enc" : "descargar/Dec");
 });
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`);
 });
