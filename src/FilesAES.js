@@ -20,7 +20,7 @@ function descifrarAES(mensajeCodificado, clave, Tamaño) {
 // * Codificacion de un .txt
 function codificarFile(ArchivoEntrada, ArchivoSalida, Clave, Tamaño) {
   console.log("Cifrado Archivo");
-  fs.readFile(ArchivoEntrada, (err, data) => {
+  fs.readFileSync(ArchivoEntrada, (err, data) => {
     // data -> Buffer (Binario)
     // err -> Error
     if (!err) {
@@ -46,7 +46,7 @@ function codificarFile(ArchivoEntrada, ArchivoSalida, Clave, Tamaño) {
 // * DeCodificacion de un .txt
 function decodificarFile(ArchivoEntrada, ArchivoSalida, Clave, Tamaño) {
   console.log("Descifrado Archivo");
-  fs.readFile(ArchivoEntrada, (err, data) => {
+  fs.readFileSync(ArchivoEntrada, (err, data) => {
     // data -> Buffer (Binario)
     // err -> Error
     if (!err) {
